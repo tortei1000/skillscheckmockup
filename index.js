@@ -21,7 +21,6 @@ app.post("/api/recipes", recipeCtrl.create)
 app.put("/api/recipes/:id", recipeCtrl.update)
 app.delete("/api/recipes:id", recipeCtrl.delete)
 
-
 app.listen(SERVER_PORT, () => {
   console.log(`Server listening on port ${SERVER_PORT}.`);
 });

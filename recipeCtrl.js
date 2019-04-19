@@ -44,10 +44,12 @@ module.exports = {
   },
 
   display: (req, res) => {
+    console.log(`fireeeeeeeed`)
     const dbInstance = req.app.get('db')
 
-    dbInstance.display_recipes().then(() => res.sendStatus(200).send(recipes))
       .catch(err => {
+        dbInstance.display_recipes().then(() => res.sendStatus(200).send(recipes))
+
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)
       })
