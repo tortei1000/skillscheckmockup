@@ -1,0 +1,2 @@
+insert into recipe(title, description, ingredients, image_url)
+values($1, $2, $3, $4)
