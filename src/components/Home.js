@@ -12,7 +12,6 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    
     axios.get("/api/recipes").then((res) => {
       
       this.setState({

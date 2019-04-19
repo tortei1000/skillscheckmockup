@@ -14,7 +14,7 @@ module.exports = {
     const dbInstance = req.app.get('db')
     const { id } = req.params
 
-    dbInstance.delete_recipe(id).then(() => res.sendStatus(200))
+    dbInstance.delete_recipe(id).then(() => res.status(200))
       .catch(err => {
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)
@@ -23,9 +23,9 @@ module.exports = {
 
   update: (req, res) => {
     const dbInstance = req.app.get('db')
-    const { paramsm, query } = req
+    const { params, query } = req
 
-    dbInstance.edit_recipe([params.id, query.desc]).then(() => res.sendStatus(200))
+    dbInstance.edit_recipe([params.id, query.desc]).then(() => res.status(200))
       .catch(err => {
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)
@@ -36,7 +36,7 @@ module.exports = {
     const dbInstance = req.app.get('db')
     const { id } = req.params
 
-    dbInstance.find_recipe(id).then(() => res.sendStatus(200).send(recipe))
+    dbInstance.find_recipe(id).then(() => res.status(200).send(recipe))
       .catch(err => {
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)
@@ -46,10 +46,9 @@ module.exports = {
   display: (req, res) => {
     console.log(`fireeeeeeeed`)
     const dbInstance = req.app.get('db')
-
-      .catch(err => {
-        dbInstance.display_recipes().then(() => res.sendStatus(200).send(recipes))
-
+    
+    dbInstance.display_recipes().then((recipes) => res.status(200).send(recipes))
+    .catch(err => {
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)
       })

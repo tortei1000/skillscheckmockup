@@ -5,6 +5,7 @@ const recipeCtrl = require("./recipeCtrl")
 
 
 const app = express();
+app.use(express.json());
 
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
@@ -13,7 +14,6 @@ massive(CONNECTION_STRING)
     app.set("db", dbInstance);
   }).catch(err => console.log(err));
 
-app.use(express.json());
 
 app.get("/api/recipes", recipeCtrl.display)
 app.get("/api/recipes/:id", recipeCtrl.find)
